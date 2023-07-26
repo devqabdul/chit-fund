@@ -16,10 +16,11 @@
   },
   "type": "module",
   "scripts": {
-    "start": "vite --host --open --port 5000",
+    "start": "yarn lint & vite --host --open --port 5000",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -33,9 +34,23 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.45.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "3.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "lint-staged": {
+    "*.{js,css,ts,tsx,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{ts,tsx}": "eslint --cache --fix"
   }
 }

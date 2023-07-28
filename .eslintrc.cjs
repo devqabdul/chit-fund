@@ -12,6 +12,11 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
   ],
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
